@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import torch
 from sklearn.metrics import classification_report
@@ -112,6 +113,9 @@ class SentimentBERT:
             torch.cuda.manual_seed_all(SEED)
 
     def load(self, model_dir='weights/'):
+        if not os.path.exists(model_dir):
+            raise FileNotFoundError("folder `{}` does not exist. Please make sure weights are there.".format(model_dir))
+
         self.tokenizer = BertTokenizer.from_pretrained(model_dir)
         self.model = BertForSequenceClassification.from_pretrained(model_dir)
         self.model.to(self.device)
