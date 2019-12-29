@@ -24,7 +24,7 @@ class SentimentDataset:
 
     def convert_to_embedding(self, sentence):
         tokens = self.tokenizer.tokenize(sentence)
-        tokens = tokens[:MAX_SENTENCE_LENGTH - 6]
+        tokens = tokens[:MAX_SENTENCE_LENGTH - 2]
         bert_sent = self._rpad(self.tokenizer.convert_tokens_to_ids(["CLS"] + tokens + ["SEP"]), n=MAX_SENTENCE_LENGTH)
 
         return bert_sent

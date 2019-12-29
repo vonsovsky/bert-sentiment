@@ -10,8 +10,8 @@ from transformers import BertForSequenceClassification, BertTokenizer
 PAD_TOKEN_LABEL_ID = CrossEntropyLoss().ignore_index
 
 
-LEARNING_RATE_MAIN_MODEL = 1e-5
-LEARNING_RATE_TUNING = 1e-3
+LEARNING_RATE_MODEL = 1e-5
+LEARNING_RATE_CLASSIFIER = 1e-3
 WARMUP_STEPS = 0
 GRADIENT_ACCUMULATION_STEPS = 1
 MAX_GRAD_NORM = 1.0
@@ -63,8 +63,8 @@ class SentimentBERT:
 
         # Prepare optimizer and schedule (linear warmup and decay)
         optimizer_grouped_parameters = [
-            {"params": model.bert.parameters(), "lr": LEARNING_RATE_MAIN_MODEL},
-            {"params": model.classifier.parameters(), "lr": LEARNING_RATE_TUNING}
+            {"params": model.bert.parameters(), "lr": LEARNING_RATE_MODEL},
+            {"params": model.classifier.parameters(), "lr": LEARNING_RATE_CLASSIFIER}
         ]
         optimizer = AdamW(optimizer_grouped_parameters)
         scheduler = get_linear_schedule_with_warmup(

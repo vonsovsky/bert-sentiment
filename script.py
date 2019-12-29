@@ -17,7 +17,7 @@ parser.add_argument('--predict', default="", type=str, help="Predict sentiment o
 parser.add_argument('--path', default='weights/', type=str, help="Weights path")
 parser.add_argument('--train-file', default='data/imdb_train.txt',
                     type=str, help="IMDB train file. One sentence per line.")
-parser.add_argument('--test-file', default='data/imdb_train.txt',
+parser.add_argument('--test-file', default='data/imdb_test.txt',
                     type=str, help="IMDB train file. One sentence per line.")
 args = parser.parse_args()
 
