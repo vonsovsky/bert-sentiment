@@ -1,4 +1,4 @@
-# Sentiment analysis by BERT
+# Sentiment analysis by BERT in PyTorch
 BERT is state-of-the-art natural language processing model from Google. Using its latent space, it can be repurpossed for various NLP tasks, such as sentiment analysis.
 
 This simple wrapper based on [Transformers](https://github.com/huggingface/transformers) (for managing BERT model) and PyTorch achieves 92% accuracy on guessing positivity / negativity on IMDB reviews.
